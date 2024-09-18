@@ -1,0 +1,158 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    height: 100vh;
+    background-color: #000; /* Noir */
+    color: #fff;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+}
+
+.sidebar {
+    width: 20%;
+    background-color: #1a1a1a; /* Gris foncé */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.sidebar .logo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.sidebar .logo img {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 10px;
+}
+
+.sidebar nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar nav ul li {
+    margin: 15px 0;
+}
+
+.sidebar nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.sidebar footer {
+    text-align: center;
+    color: #777;
+    font-size: 14px;
+}
+
+.main-content {
+    width: 60%; /* Adjusted width */
+    background-color: #121212; /* Fond sombre */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    margin-bottom: 20px;
+}
+
+header h2 {
+    font-size: 24px;
+}
+
+header p {
+    color: #ccc;
+}
+
+.chat-container {
+    flex: 1;
+    background-color: #2a2a2a; /* Gris sombre pour la boîte de chat */
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+#chat-box {
+    flex: 1;
+    background-color: #1e1e1e;
+    padding: 10px;
+    border-radius: 8px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+}
+
+#user-input-container {
+    display: flex;
+}
+
+#user-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    background-color: #333;
+    color: #fff;
+}
+
+button {
+    padding: 10px 20px;
+    margin-left: 10px;
+    border: none;
+    background-color: #007bff; /* Bleu vif */
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3; /* Bleu foncé au survol */
+}
+
+/* Section Équipe */
+#equipe {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #1a1a1a;
+    border-radius: 8px;
+    color: #ccc;
+}
+
+#equipe h3 {
+    font-size: 22px;
+}
+
+#equipe ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+/* History Section Positioned on the Right */
+.history-content {
+    width: 20%; /* Adjusted width */
+    background-color: #1a1a1a; /* Gris foncé */
+    padding: 20px;
+}
+
+#historique {
+    overflow-y: auto;
+    max-height: 100vh; /* Makes sure it doesn't overflow the page */
+}
+
+#history-container {
+    background-color: #1e1e1e;
+    padding: 10px;
+    border-radius: 8px;
+}

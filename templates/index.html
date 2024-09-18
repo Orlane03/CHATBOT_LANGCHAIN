@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en fran">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Interface</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo">
+                <h1>Chatbot</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/" onclick="hideSections()">Accueil</a></li>
+                    <li><a href="#" onclick="showSection('equipe')">Équipe</a></li>
+                </ul>
+            </nav>
+            <footer>
+                <p>&copy; 2024 Chatbot Interface. Tous droits réservés.</p>
+            </footer>
+        </div>
+
+        <div class="main-content">
+            <header>
+                <h2>Où la recherche commence</h2>
+                <p>Interroger sur quelque chose...</p>
+            </header>
+
+            <div class="chat-container">
+                <div id="chat-box"></div>
+                <div id="user-input-container">
+                    <input type="text" id="user-input" placeholder="Tapez votre message...">
+                    <button id="send-button">Envoyer</button>
+                    <button id="generateRdfCube" onclick="generateRdfCube()">Générer le cube RDF</button>
+
+                </div>
+            </div>
+
+            <div id="rdf-container" style="display: none; background-color: #1e1e1e; padding: 10px; margin-top: 20px; border-radius: 8px;">
+                <h3>RDF Cube Généré</h3>
+                <pre id="rdf-content" style="color: #fff;"></pre>
+            </div>
+            
+            <section id="equipe" style="display: none;">
+                <h3>Équipe de Développement</h3>
+                <p>Cette application a été développée par une équipe de passionnés de technologie et d'IA. Voici les membres de l'équipe :</p>
+                <ul>
+                    <li>MASOBELE MVITA Charly</li>
+                    <li>SONKENG TSAFACK Orlane</li>
+                    <li>NZAZI NGABILA Boaz</li>
+                    <li>ISSA SORO Fiti</li>
+                </ul>
+            </section>
+        </div>
+
+        <!-- Separate History Section on the Right Side -->
+        <div class="history-content">
+            <section id="historique">
+                <h3>Historique des Conversations</h3>
+                <div id="history-container"></div>
+            </section>
+        </div>
+    </div>
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Attacher les événements click aux boutons après le chargement de la page
+            document.getElementById('send-button').addEventListener('click', sendMessage);
+            document.getElementById('generateRdfCube').addEventListener('click', generateRdfCube);
+        });
+        
+        function sendMessage() {
+            const userInput = document.getElementById('user-input').value;
+        
+            if (userInput.trim() === "") {
+                return; // Ne pas envoyer si l'entrée utilisateur est vide
+            }
+
+            // Envoyer la requête POST au serveur Flask
+            fetch('/get_response', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ user_input: userInput })
+            })
+            .then(response => response.json())
+            .then(data => {
+                const chatBox = document.getElementById('chat-box');
+                chatBox.innerHTML += `<p><strong>Vous:</strong> ${userInput}</p>`;
+                chatBox.innerHTML += `<p><strong>Chatbot:</strong> ${data.response}</p>`;
+                document.getElementById('user-input').value = ''; // Réinitialiser l'entrée utilisateur
+            })
+            .catch(error => {
+                console.error('Erreur:', error);
+            });
+        }
+        
+        function fetchHistory() {
+            fetch('/get_history')
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);  // Debug: Afficher les données reçues dans la console
+                    const historyContainer = document.getElementById('history-container');
+                    historyContainer.innerHTML = ''; // Effacer l'historique précédent
+        
+                    // Afficher chaque conversation de l'historique
+                    data.history.forEach(entry => {
+                        historyContainer.innerHTML += `<p><strong>Vous:</strong> ${entry.user}</p>`;
+                        historyContainer.innerHTML += `<p><strong>Chatbot:</strong> ${entry.bot}</p>`;
+                    });
+                })
+                .catch(error => console.error('Erreur:', error));
+        }
+        
+        function generateRdfCube() {
+            fetch('/generate_rdf_cube', {
+                method: 'POST',
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+                console.log(data);
+            })
+            .catch(error => {
+                console.error('Erreur:', error);
+            });
+        }
+        
+        
+        function fetchRdfCube() {
+            fetch('/get_rdf_cube', {
+                method: 'GET',
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.rdf_cube) {
+                    const rdfContainer = document.getElementById('rdf-container');
+                    const rdfContent = document.getElementById('rdf-content');
+                    rdfContent.textContent = data.rdf_cube;
+                    rdfContainer.style.display = 'block';
+                } else {
+                    alert('Erreur: ' + data.error);
+                }
+            })
+            .catch(error => {
+                console.error('Erreur:', error);
+            });
+        }
+
+        function showSection(sectionId) {
+            document.querySelectorAll('.main-content section').forEach(section => {
+                section.style.display = 'none';
+            });
+            document.getElementById(sectionId).style.display = 'block';
+        }
+
+        function hideSections() {
+            document.querySelectorAll('.main-content section').forEach(section => {
+                section.style.display = 'none';
+            });
+        }
+
+        // Charger automatiquement l'historique du chat lorsque la page est chargée
+        document.addEventListener('DOMContentLoaded', function() {
+            fetchHistory();
+        });
+    </script>
+</body>
+</html>

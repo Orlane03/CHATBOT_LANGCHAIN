@@ -1,0 +1,40 @@
+Vous: bonjour
+Chatbot: Bonjour! Comment puis-je vous aider aujourd'hui?
+
+Vous: comment tu t'appelles ?
+Chatbot: Je m'appelle Assistant. Et toi, comment t'appelles-tu ?
+
+Vous: Orlane
+Chatbot: Orlane is a luxury skincare brand that offers a range of high-quality products designed to address various skincare concerns, such as anti-aging, hydration, and brightening. The brand is known for its innovative formulations, luxurious textures, and effective results. Orlane's products are often favored by those looking for high-end skincare solutions that deliver visible and long-lasting benefits.
+
+Vous: non je te disais que je m'appelle Orlane
+Chatbot: Ah, je comprends maintenant. Enchant� Orlane, comment puis-je t'aider aujourd'hui ?
+
+Vous: tu t'y  connais en ontology et web semantique ?
+Chatbot: Oui, je suis un programme d'intelligence artificielle qui a �t� con�u pour r�pondre � des questions et fournir des informations sur une vari�t� de sujets, y compris l'ontology et le web s�mantique. Si vous avez des questions sp�cifiques sur ces sujets, n'h�sitez pas � les poser et je ferai de mon mieux pour vous fournir des r�ponses pr�cises et utiles.
+
+Vous: c'est quoi une ontologie
+Chatbot: Une ontologie est une repr�sentation formelle et explicite des concepts, des relations entre ces concepts et des propri�t�s de ces concepts dans un domaine sp�cifique. Elle permet de structurer la connaissance et de d�finir les termes et les relations qui existent dans un domaine donn�. Les ontologies sont souvent utilis�es en informatique pour organiser et structurer des bases de donn�es, des syst�mes d'information ou des connaissances dans le domaine de l'intelligence artificielle.
+
+Vous: hello
+Chatbot: Hello! How can I assist you today?
+
+Vous: hello
+Chatbot: Hello! How can I assist you today?
+
+Vous: quit
+Chatbot: Goodbye! If you ever need help again, feel free to reach out. Take care!
+
+Vous: bonjour
+Chatbot: Bonjour! Comment puis-je vous aider aujourd'hui?
+
+Vous: quitter
+Chatbot: I'm sorry to hear that you're feeling like quitting. Is there something specific that's causing you to feel this way? Let's talk about it.
+
+[
+    ¨messages:¨{
+        vous:"jhvkjhkhj",
+        Chatbot:"hghjh"  
+        
+          }
+]
