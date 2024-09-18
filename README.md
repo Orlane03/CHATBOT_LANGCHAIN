@@ -93,10 +93,10 @@ Pour exécuter le chatbot dans une interface en ligne de commande :
 
 Développé par :
 
-        - **MASOBELE MVITA Charly**
-        - **SONKENG TSAFACK Orlane**
-        - **ISSA SORO Fiti**
-        - **NZAZI NGABILA Boaz**
+        - MASOBELE MVITA Charly
+        - SONKENG TSAFACK Orlane
+        - ISSA SORO Fiti
+        - NZAZI NGABILA Boaz
 
 ## Licence
 
